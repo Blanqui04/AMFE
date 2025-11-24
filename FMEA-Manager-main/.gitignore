@@ -30,7 +30,8 @@ MANIFEST
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
-*.spec
+# NO ignorar .spec - és necessari per al build
+# *.spec
 
 # Installer logs
 pip-log.txt
@@ -205,3 +206,27 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# AMFE Manager - Específic del projecte
+# Directoris de build i output
+build/
+dist/
+installer_output/
+*.exe
+
+# Logs locals (els logs es guarden a AppData)
+logs/
+
+# Entorn virtual
+venv/
+.venv/
+
+# Fitxers temporals de Windows
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Dades temporals o de test
+data/*.xlsx
+data/*.xls
+!data/.gitkeep

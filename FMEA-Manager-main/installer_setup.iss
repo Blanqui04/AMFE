@@ -20,11 +20,11 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=LICENSE
-InfoBeforeFile=docs\LLEGEIX-ME.txt
+;LicenseFile=LICENSE
+;InfoBeforeFile=docs\LLEGEIX-ME.txt
 OutputDir=installer_output
 OutputBaseFilename=AMFE-Manager-Setup-{#MyAppVersion}
-SetupIconFile=assets\images\logo_some.png
+;SetupIconFile=assets\images\logo_some.png
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -41,14 +41,10 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 [Files]
 Source: "dist\AMFE-Manager\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "dist\AMFE-Manager\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "README.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion recursesubdirs
-Source: "config\settings.example.yaml"; DestDir: "{app}\config"; Flags: ignoreversion
 
 ; Icones del menú d'inici i escriptori
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{group}\Manual d'Usuari"; Filename: "{app}\docs\MANUAL_USUARI.pdf"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 

@@ -1,12 +1,15 @@
 import logging
 import os
 from datetime import datetime
+from pathlib import Path
 
 def setup_logging(module_name: str) -> logging.Logger:
-    log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)
+    # Utilitza AppData local per als logs (ubicació estàndard de Windows)
+    appdata_dir = Path(os.getenv('LOCALAPPDATA', os.path.expanduser('~')))
+    log_dir = appdata_dir / "AMFE-Manager" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
 
-    log_filename = os.path.join(log_dir, f"{module_name}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log")
+    log_filename = log_dir / f"{module_name}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
 
     logger = logging.getLogger(module_name)
     logger.setLevel(logging.DEBUG)
