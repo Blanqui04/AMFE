@@ -1,46 +1,121 @@
-# AMFE-S-Manager
+# AMFE Manager 🚀
 
-## Project Overview
+Gestor professional de FMEA (Failure Mode and Effects Analysis) amb interfície gràfica i sistema d'instal·lació automàtica per a Windows.
 
-AMFE-S-Manager is a Python-based application designed to streamline the management, analysis, and visualization of P-FMEA (Process Failure Mode and Effects Analysis) data for manufacturing and quality assurance processes. The tool provides a user-friendly interface to scan, combine, and analyze AMFE Excel files from networked or local directories, generate risk distribution charts, and facilitate process improvement decisions.
+[![GitHub release](https://img.shields.io/github/v/release/Blanqui04/AMFE)](https://github.com/Blanqui04/AMFE/releases/latest)
+[![Windows](https://img.shields.io/badge/Platform-Windows%2010%2B-blue)](https://github.com/Blanqui04/AMFE/releases)
 
-### Key Features
-- **Automatic Process Scanning:** Detects available process folders containing AMFE data.
-- **Excel Data Aggregation:** Combines multiple AMFE Excel files, extracting relevant data while ignoring temporary or invalid files.
-- **Risk Analysis:** Calculates and visualizes risk levels (High, Medium, Low) before and after mitigation actions.
-- **Chart Generation:** Creates professional pie charts and summary graphics for risk distribution.
-- **Internationalization (i18n):** Default language is Catalan, with support for Polish and English. Easily extensible to more languages using Babel.
-- **Error Handling:** Robust validation and error reporting for file operations and data extraction.
-- **Extensible Structure:** Modular design for future expansion, including GUI, reporting, and integration with other systems.
+## 📥 Descàrrega i Instal·lació
 
-## Folder Structure
+### Per a usuaris finals
+
+**👉 [Descarrega l'última versió](https://github.com/Blanqui04/AMFE/releases/latest)** ⬅️
+
+1. Descarrega `AMFE-Manager-Setup-X.X.X.exe`
+2. Executa l'installer (doble clic)
+3. Segueix l'assistent d'instal·lació
+4. Troba l'aplicació al menú d'inici o escriptori
+
+📖 **Guia completa**: [INSTALLACIO.md](INSTALLACIO.md)
+
+### Requisits del sistema
+
+- ✅ Windows 10 o superior (64-bit)
+- ✅ ~100 MB d'espai lliure
+- ✅ 4 GB RAM (recomanat 8 GB)
+- ✅ **No requereix Python instal·lat**
+
+## ✨ Funcionalitats
+
+- 📊 **Gestió completa** de fitxers AMFE/FMEA (P-FMEA)
+- 🖥️ **Interfície gràfica** intuïtiva amb PyQt5
+- 📈 **Generació automàtica** de gràfics i reports
+- 💾 **Export a Excel** amb formatació professional
+- 🌍 **Suport multiidioma** (Català, Anglès, Polonès)
+- 📝 **Sistema de logging** automàtic
+- 🎨 **Formats estàndard** AMFE aplicats automàticament
+- 🔒 **Gestió segura** de permisos i dades
+- 📊 **Anàlisi de risc** (Alt, Mitjà, Baix) abans i després de mitigació
+- 🔍 **Escaneig automàtic** de carpetes de procés
+- 📦 **Agregació de dades** de múltiples fitxers Excel
+
+## 🚀 Inici ràpid
+
+### Opció 1: Installer (Recomanat per usuaris finals)
+
+1. **Descarrega** des de [Releases](https://github.com/Blanqui04/AMFE/releases)
+2. **Executa** l'installer
+3. **Obre** l'aplicació des del menú d'inici
+
+### Opció 2: Des del codi font (Desenvolupadors)
+
+```bash
+# Clonar el repositori
+git clone https://github.com/Blanqui04/AMFE.git
+cd AMFE/FMEA-Manager-main
+
+# Crear entorn virtual
+python -m venv venv
+venv\Scripts\activate
+
+# Instal·lar dependències
+pip install -r requirements.txt
+
+# Compilar traduccions
+pybabel compile -d i18n -D messages
+
+# Executar aplicació
+python amfe_ui.py
+```
+
+## 💻 Desenvolupament
+
+### Build de l'executable i installer
+
+```powershell
+# Netejar builds anteriors
+.\cleanup_repo.ps1
+
+# Build complet (executable + installer)
+.\build_all_simple.ps1
+
+# Només executable
+.\build_executable_simple.ps1
+
+# Només installer (requereix executable existent)
+.\build_installer_simple.ps1
+```
+
+### Estructura del projecte
 
 ```
-amfe-s-manager/
+FMEA-Manager-main/
+├── amfe_ui.py                  # Punt d'entrada de l'aplicació
+├── requirements.txt            # Dependències Python
+├── installer_setup.iss         # Configuració Inno Setup
+├── amfe_manager.spec           # Configuració PyInstaller
 │
-├── amfe_ui.py             # (Planned) User interface for interacting with the backend
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
+├── backend/                    # Lògica del negoci
+│   ├── amfe_manager.py        # Gestor principal AMFE
+│   ├── errors.py              # Gestió d'errors
+│   ├── xl_amfe_format.py      # Formatació Excel AMFE
+│   └── xl_cover_format.py     # Formatació portada
 │
-├── backend/               # Backend logic and data processing modules
-│   ├── __init__.py
-│   ├── amfe_manager.py
-│   ├── errors.py
-│   ├── xl_cover_format.py # This we're doing!
-│   └── xl_amfe_format.py
+├── frontend/                   # Interfície d'usuari
+│   ├── qt_ui.py               # Interfície PyQt5
+│   └── ui_main.py             # Finestra principal
 │
-├── frontend/              # (Planned) Frontend UI components (e.g., for web or desktop GUI)
-│   ├── __init__.py
-│   ├── qt_ui.py
-│   └── ui_main.py
+├── utilities/                  # Utilitats
+│   └── logger.py              # Sistema de logging
 │
-├── config/                         # Utility scripts and helper functions
-│   ├── README.md
-│   └── settings.example.yaml       # Not in use rn
+├── i18n/                       # Traduccions (ca, en, pl)
+├── config/                     # Configuració
+├── docs/                       # Documentació
 │
-├── utilities/             # Utility scripts and helper functions
-│   ├── __init__.py
-│   └── logger.py      # Not in use rn
+├── build_all_simple.ps1        # Script build complet
+├── build_executable_simple.ps1 # Build executable
+├── build_installer_simple.ps1  # Build installer
+└── cleanup_repo.ps1            # Neteja builds
 │
 ├── data/                  # (Optional) Sample data, templates, or output files
 │   └── .gitkeep

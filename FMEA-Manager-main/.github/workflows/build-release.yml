@@ -1,0 +1,90 @@
+name: Build and Release AMFE Manager
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+        
+    - name: Compile translations
+      run: |
+        pybabel compile -d i18n -D messages
+        
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller amfe_manager.spec
+        
+    - name: Download Inno Setup
+      run: |
+        Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "innosetup.exe"
+        Start-Process -FilePath ".\innosetup.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-" -Wait
+        
+    - name: Build installer with Inno Setup
+      run: |
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer_setup.iss
+        
+    - name: Get version from tag
+      id: get_version
+      run: |
+        if ($env:GITHUB_REF -match 'refs/tags/(.*)') {
+          $version = $matches[1]
+        } else {
+          $version = "dev"
+        }
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+      shell: pwsh
+      
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          installer_output/AMFE-Manager-Setup-*.exe
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        body: |
+          ## AMFE Manager ${{ steps.get_version.outputs.version }}
+          
+          ### Instal·lació
+          1. Descarrega `AMFE-Manager-Setup-${{ steps.get_version.outputs.version }}.exe`
+          2. Executa l'installer (doble clic)
+          3. Segueix les instruccions de l'assistent
+          4. L'aplicació es crearà a `C:\Program Files\AMFE Manager\`
+          5. Busca "AMFE Manager" al menú d'inici o utilitza l'icona de l'escriptori
+          
+          ### Requisits
+          - Windows 10 o superior
+          - ~100 MB d'espai lliure
+          
+          ### Novetats
+          - Consulta les release notes per veure els canvis en aquesta versió
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload installer as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: AMFE-Manager-Installer
+        path: installer_output/AMFE-Manager-Setup-*.exe
+        retention-days: 90

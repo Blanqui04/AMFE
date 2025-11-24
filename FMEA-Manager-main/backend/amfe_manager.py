@@ -22,27 +22,8 @@ from .xl_cover_format import format_process_graphics_sheet
 
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
+# Configura el logging utilitzant utilities.logger
 logger = setup_logging("amfe")
-# Ensure logs folder exists
-log_dir = "logs"
-os.makedirs(log_dir, exist_ok=True)
-
-# Create log file name with timestamp
-log_filename = os.path.join(
-    log_dir, f"amfe_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
-)
-
-# Configure logging
-logging.basicConfig(
-    level=logging.DEBUG,  # Or INFO in production
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(log_filename, mode="w", encoding="utf-8"),
-        logging.StreamHandler(),  # Also prints to console
-    ],
-)
-
-logger = logging.getLogger(__name__)
 
 NOM_CARPETA_AMFES = (
     r"\\Server\some\1002-SPS\3.5 PROCESS ASSURANCE_P-FMEA\4 Draft\00_AMFES en curs"
