@@ -1,0 +1,39 @@
+Benvingut a AMFE-S Manager!
+
+Aquesta aplicació t'ajudarà a gestionar i analitzar les teves dades d'AMFE (Anàlisi Modal de Fallades i Efectes) de manera senzilla i professional.
+
+CARACTERÍSTIQUES PRINCIPALS:
+-----------------------------
+✓ Escaneig automàtic de processos
+✓ Anàlisi de riscos abans i després d'accions
+✓ Generació de gràfics professionals
+✓ Exportació de resultats
+✓ Interfície en català, anglès i polonès
+
+REQUISITS DEL SISTEMA:
+----------------------
+- Windows 10 o superior
+- 4 GB RAM (8 GB recomanat)
+- 500 MB d'espai lliure
+- Resolució 1280x720 o superior
+
+PER COMENÇAR:
+-------------
+1. Completa la instal·lació
+2. Obre l'aplicació des del menú d'inici o l'escriptori
+3. Selecciona la carpeta on tens els teus arxius AMFE
+4. Comença a analitzar!
+
+DOCUMENTACIÓ:
+-------------
+Trobaràs el manual complet d'usuari a:
+- Menú d'inici: AMFE-S Manager > Manual d'Usuari
+- Carpeta d'instal·lació: docs\MANUAL_USUARI.md
+
+SUPORT:
+-------
+Si tens problemes o preguntes:
+- Consulta els logs a: %APPDATA%\AMFE-Manager\logs\
+- Visita: https://github.com/Blanqui04/AMFE
+
+Gràcies per utilitzar AMFE-S Manager!

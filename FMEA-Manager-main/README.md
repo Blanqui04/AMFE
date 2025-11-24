@@ -87,17 +87,58 @@ amfe-s-manager/
 - **Advanced Analytics:** Trend analysis, custom risk metrics, and exportable dashboards.
 - **Localization:** Multi-language support for international teams.
 
-## Getting Started
+## 📦 Instal·lació per a Usuaris Finals
 
-1. **Clone the repository:**
+**L'aplicació està disponible com un instal·lador professional per Windows:**
+
+1. Descarrega `AMFE-Manager-Setup-1.0.0.exe`
+2. Executa l'instal·lador i segueix les instruccions
+3. Obre l'aplicació des del menú d'inici
+
+**No cal instal·lar Python ni cap dependència!**
+
+📖 **Manual complet:** Consulta `docs/MANUAL_USUARI.md`
+
+---
+
+## 🛠️ Per a Desenvolupadors
+
+### Instal·lació des del codi font
+
+1. **Clona el repositori:**
    ```sh
-   git clone https://github.com/your-org/amfe-s-manager.git
-   cd amfe-s-manager
+   git clone https://github.com/Blanqui04/AMFE.git
+   cd AMFE/FMEA-Manager-main
    ```
-2. **Install dependencies:**
+
+2. **Crea entorn virtual:**
+   ```sh
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1  # Windows
+   ```
+
+3. **Instal·la dependències:**
    ```sh
    pip install -r requirements.txt
    ```
+
+4. **Executa l'aplicació:**
+   ```sh
+   python amfe_ui.py
+   ```
+
+### 🚀 Crear instal·lador per distribuir
+
+```powershell
+# Build automàtic complet (recomanat)
+.\build_all.ps1
+
+# O pas a pas:
+.\build_executable.ps1    # Crea l'executable
+.\build_installer.ps1     # Crea l'instal·lador
+```
+
+📋 **Guia completa:** Consulta `docs/GUIA_DISTRIBUCIO.md`
 3. **Run the main script:**
    ```sh
    python amfe.py
