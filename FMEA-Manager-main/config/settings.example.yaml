@@ -1,0 +1,20 @@
+# Example configuration for AMFE-S-Manager
+# Copy this file to settings.yaml and adjust as needed
+
+app:
+  name: AMFE-S-Manager
+  default_language: ca
+  supported_languages:
+    - ca
+    - en
+    - pl
+  debug: true
+
+paths:
+  data_dir: ./data
+  assets_dir: ./assets
+  i18n_dir: ./i18n
+
+logging:
+  level: INFO
+  file: ./logs/amfe.log

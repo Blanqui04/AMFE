@@ -1,0 +1,49 @@
+# Core libraries for AMFE-S-Manager
+openpyxl>=3.1.0         # Reading/writing Excel files (AMFE data)
+matplotlib>=3.5.0       # Data visualization and charting (risk pie charts)
+
+# GUI and Frontend (choose one or both as needed)
+PyQt5>=5.15.0           # (Optional) Desktop GUI development
+streamlit>=1.0.0        # (Optional) Web-based UI for rapid prototyping
+
+# Data manipulation and analysis
+pandas>=2.0.0           # Advanced data analysis, merging, filtering, and Excel I/O
+numpy>=1.23.0           # Numerical operations, array handling, and data cleaning
+
+# Backend and API
+# fastapi>=0.100.0        # (Optional) For building RESTful APIs if web backend is needed
+# uvicorn>=0.22.0         # (Optional) ASGI server for FastAPI
+
+# Database support (for future scalability)
+# sqlalchemy>=2.0.0       # (Optional) ORM for SQL databases
+# pymongo>=4.0.0          # (Optional) MongoDB integration for NoSQL storage
+
+# Authentication and Security
+# python-jose>=3.3.0      # (Optional) JWT authentication for APIs
+# passlib[bcrypt]>=1.7.4  # (Optional) Password hashing utilities
+
+# Reporting and Export
+reportlab>=4.0.0        # (Optional) PDF report generation
+xlsxwriter>=3.1.0       # (Optional) Advanced Excel file creation
+
+# Testing and Quality
+pytest>=7.0.0           # Unit and integration testing
+pytest-cov>=4.0.0       # Test coverage reporting
+
+# Linting and Formatting
+black>=24.0.0           # Code formatting
+flake8>=7.0.0           # Linting for code quality
+
+# Internationalization (i18n)
+babel>=2.12.0           # (Required) Localization and translations. Default language: Catalan. Supported: Polish, English.
+# To add more languages, use Babel's CLI tools to extract and compile translations.
+
+# Miscellaneous
+requests>=2.31.0        # HTTP requests for integrations or data fetching
+python-dotenv>=1.0.0    # Environment variable management
+loguru>=0.7.0           # Advanced logging
+
+# Jupyter and Notebooks (for data exploration)
+jupyterlab>=4.0.0       # (Optional) Interactive notebooks for data analysis
+
+# Note: Not all packages are required for basic operation. Install as needed for new features or scalability.
