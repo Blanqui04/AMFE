@@ -1,0 +1,69 @@
+# GitHub Actions Workflow per crear releases automàticament
+# Aquest fitxer és OPCIONAL però molt útil per automatitzar el procés
+
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # S'activa quan es crea un tag com v1.0.0
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+        
+    - name: Compile translations
+      run: |
+        pip install babel
+        pybabel compile -d i18n
+        
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller amfe_manager.spec
+        
+    - name: Download and Install Inno Setup
+      run: |
+        Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "innosetup.exe"
+        Start-Process -FilePath "innosetup.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-" -Wait
+        
+    - name: Build installer
+      run: |
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer_setup.iss
+        
+    - name: Get version
+      id: get_version
+      run: |
+        $version = ($env:GITHUB_REF -replace 'refs/tags/v', '')
+        echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          installer_output/AMFE-Manager-Setup-*.exe
+        body_path: CHANGELOG.md
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload Release Asset
+      uses: actions/upload-artifact@v3
+      with:
+        name: AMFE-Manager-Setup
+        path: installer_output/AMFE-Manager-Setup-*.exe

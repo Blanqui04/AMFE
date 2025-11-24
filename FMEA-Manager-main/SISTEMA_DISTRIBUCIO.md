@@ -135,15 +135,36 @@ S'ha creat un sistema professional complet per distribuir l'aplicació AMFE-S Ma
 
 ### Per distribuir als usuaris
 
-**Només has de donar:**
+**Opció 1: GitHub Releases (RECOMANAT) 🌟**
+
+```powershell
+# Prepara el release
+.\prepare_release.ps1
+
+# Segueix les instruccions per crear el release a GitHub
+```
+
+**Avantatges:**
+- ✅ URL permanent per cada versió
+- ✅ Estadístiques de descàrregues
+- ✅ Notes de versió integrades
+- ✅ Checksum automàtic
+- ✅ Sistema professional i gratuït
+
+📖 **Guia completa:** [`docs/GUIA_GITHUB_RELEASES.md`](docs/GUIA_GITHUB_RELEASES.md)
+
+**Opció 2: Distribució directa**
+
+Pots donar directament el fitxer:
 ```
 installer_output\AMFE-Manager-Setup-1.0.0.exe
 ```
 
 **L'usuari només ha de:**
-1. Fer doble clic
-2. Seguir l'assistent
-3. Utilitzar l'aplicació
+1. Descarregar el fitxer
+2. Fer doble clic
+3. Seguir l'assistent
+4. Utilitzar l'aplicació
 
 **NO cal:**
 - ❌ Instal·lar Python

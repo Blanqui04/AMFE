@@ -91,13 +91,26 @@ amfe-s-manager/
 
 **L'aplicació està disponible com un instal·lador professional per Windows:**
 
-1. Descarrega `AMFE-Manager-Setup-1.0.0.exe`
-2. Executa l'instal·lador i segueix les instruccions
-3. Obre l'aplicació des del menú d'inici
+### Descàrrega des de GitHub Releases
 
-**No cal instal·lar Python ni cap dependència!**
+[![GitHub release](https://img.shields.io/github/v/release/Blanqui04/AMFE)](https://github.com/Blanqui04/AMFE/releases)
 
-📖 **Manual complet:** Consulta `docs/MANUAL_USUARI.md`
+1. **Descarrega l'instal·lador:**
+   - Ves a [GitHub Releases](https://github.com/Blanqui04/AMFE/releases/latest)
+   - Descarrega `AMFE-Manager-Setup-X.X.X.exe`
+
+2. **Instal·la:**
+   - Fes doble clic sobre el fitxer descarregat
+   - Segueix les instruccions de l'assistent
+   - L'aplicació s'obrirà automàticament després d'instal·lar
+
+3. **Utilitza:**
+   - Troba l'aplicació al menú d'inici: **AMFE-S Manager**
+   - O fes clic a la icona de l'escriptori
+
+**✅ No cal instal·lar Python ni cap dependència!**
+
+📖 **Manual complet:** Consulta [`docs/MANUAL_USUARI.md`](docs/MANUAL_USUARI.md)
 
 ---
 
