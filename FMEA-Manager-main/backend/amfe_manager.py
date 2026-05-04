@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 logger = setup_logging("amfe")
 
 NOM_CARPETA_AMFES = (
-    r"\\Server\some\1002-SPS\3.5 PROCESS ASSURANCE_P-FMEA\4 Draft\00_AMFES en curs"
+    r"\\Server\some\1002-SPS\3.5 PROCESS ASSURANCE_P-FMEA\6 P-FMEA (in-serial)"
 )
 CARPETA_AMFE = r"\03_AMFE"
 
