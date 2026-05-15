@@ -62,7 +62,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='assets/images/logo_some.png' if os.path.exists('assets/images/logo_some.png') else None,
+    icon='assets/images/logo_some.ico' if os.path.exists('assets/images/logo_some.ico') else None,
 )
 
 coll = COLLECT(

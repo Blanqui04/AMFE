@@ -10,7 +10,7 @@
 
 [Setup]
 ; Informació bàsica de l'aplicació
-AppId={{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}
+AppId={{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
@@ -24,7 +24,7 @@ AllowNoIcons=yes
 ;InfoBeforeFile=docs\LLEGEIX-ME.txt
 OutputDir=installer_output
 OutputBaseFilename=AMFE-Manager-Setup-{#MyAppVersion}
-;SetupIconFile=assets\images\logo_some.png
+SetupIconFile=assets\images\logo_some.ico
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
