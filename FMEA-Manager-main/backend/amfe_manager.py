@@ -28,7 +28,7 @@ logger = setup_logging("amfe")
 NOM_CARPETA_AMFES = (
     r"\\Server\some\1002-SPS\3.5 PROCESS ASSURANCE_P-FMEA\6 P-FMEA (in-serial)"
 )
-CARPETA_AMFE = r"\03_AMFE"
+CARPETA_AMFE = r"\6 P-FMEA (in-serial)"
 
 
 class AmfeManager:
